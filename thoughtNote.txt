@@ -1,0 +1,3 @@
+Applicatioin name: Jokes Applicatioin
+type: API 
+Description: It is an API Which server joke/jokes as per the request. 
