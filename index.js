@@ -8,18 +8,18 @@ const masterKey = "4VGP2DN-6EWM4SJ-N6FGRHV-Z3PR3TT";
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //1. GET a random joke
-app.get("/random", (req,res) => {
+app.get("/random", (req, res) => {
   console.log(Math.floor(Math.random() * jokes.length));
   const myJoke = jokes[Math.floor(Math.random() * jokes.length)];
   res.send(myJoke);
 })
 //2. GET a specific joke
-app.get("/jokes/:id", (req,res) => {
-  res.send(jokes[req.params.id-1]);
+app.get("/jokes/:id", (req, res) => {
+  res.send(jokes[req.params.id - 1]);
 })
 
 //3. GET a jokes by filtering on the joke type
-app.get("/filter", (req,res) => {
+app.get("/filter", (req, res) => {
   const type = req.query.type;
   console.log(type);
   const filteredJokes = jokes.filter((joke) => joke.jokeType === type);
@@ -27,7 +27,14 @@ app.get("/filter", (req,res) => {
 }
 )
 //4. POST a new joke
-
+app.post("/jokes", (req, res) => {
+  console.log(req.body);
+  const newJoke = { id: jokes.length + 1, jokeText: req.body.jokeText, jokeType: req.body.jokeType };
+  console.log(newJoke);
+  jokes.push(newJoke);
+  console.log(jokes.slice(-1));
+  res.send(newJoke);
+});
 //5. PUT a joke
 
 //6. PATCH a joke
@@ -611,9 +618,9 @@ var jokes = [
     jokeText: "What do you call fake spaghetti? An impasta!",
     jokeType: "Food",
   },
-{
-  id: 101,
-  jokeText: "This is a test joke",
-  jokeType: "Test"
-}
+  {
+    id: 101,
+    jokeText: "This is a test joke",
+    jokeType: "Test"
+  }
 ];
