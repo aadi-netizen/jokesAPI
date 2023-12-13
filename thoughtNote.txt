@@ -18,3 +18,7 @@ helping the server understand how to parse and process the incoming data.
 ♦ Doubts: 
 
 1. Could entire server app be considered as an API?
+
+
+♦♦ Bug alert 
+1. the "/jokes" route handler is working fine except it is not pushing the newJoke in the jokes array.
