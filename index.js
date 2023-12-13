@@ -11,19 +11,20 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/random", (req,res) => {
   console.log(Math.floor(Math.random() * jokes.length));
   const myJoke = jokes[Math.floor(Math.random() * jokes.length)];
-  console.log(myJoke);
   res.send(myJoke);
 })
 //2. GET a specific joke
 app.get("/jokes/:id", (req,res) => {
   res.send(jokes[req.params.id-1]);
 })
+
 //3. GET a jokes by filtering on the joke type
 app.get("/filter", (req,res) => {
-  console.log(req.body);
-  const type = req.body.type;
+  const type = req.query.type;
   console.log(type);
-\
+  const filteredJokes = jokes.filter((joke) => joke.jokeType === type);
+  res.send(filteredJokes);
+}
 )
 //4. POST a new joke
 
@@ -610,4 +611,9 @@ var jokes = [
     jokeText: "What do you call fake spaghetti? An impasta!",
     jokeType: "Food",
   },
+{
+  id: 101,
+  jokeText: "This is a test joke",
+  jokeType: "Test"
+}
 ];
