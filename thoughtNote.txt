@@ -1,3 +1,20 @@
 Applicatioin name: Jokes Applicatioin
 type: API 
 Description: It is an API Which server joke/jokes as per the request. 
+
+Learnings: 
+
+1. To tap a query passed with the request url use "req.query.qureyName" and not "req.body" as 
+it constitute body of the request. The req.body contains data in various forms such as form data, json data, 
+Multipart/formdata(for binary data: document,image),xml(like html), graphQl and custome data.
+The Content-Type header in the HTTP request specifies the type of data in the request body, 
+helping the server understand how to parse and process the incoming data.
+
+2. Methods are always tapped as "property.methodName()".
+
+3. An array of objects could sent as response directly as a single object.
+
+------------------------------------------------------------------------------------------
+♦ Doubts: 
+
+1. Could entire server app be considered as an API?
